@@ -1,0 +1,22 @@
+BasedOnStyle: LLVM
+
+# Line length
+ColumnLimit: 96
+
+# Indentation
+IndentWidth: 4
+TabWidth: 4
+UseTab: Never
+
+# Braces
+BreakBeforeBraces: Attach
+
+# Indentation behavior
+IndentCaseLabels: true
+IndentPPDirectives: None
+
+# Includes
+SortIncludes: true
+
+# Pointer alignment
+PointerAlignment: Left
