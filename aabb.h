@@ -68,6 +68,16 @@ class aabb {
         return true;
     }
 
+    int longest_axis() const {
+        // Returns the index of the longest axis of the bounding box.
+        if (x.size() > y.size())
+            return x.size() > z.size() ? 0 : 2;
+        else
+            return y.size() > z.size() ? 1 : 2;
+    }
+
+    static const aabb empty, universe;
+
   private:
     void pad_to_minumums() {
         // Adjust the AABB so that no side is narrower than some delta, padding if necessary.
@@ -81,5 +91,15 @@ class aabb {
             z = z.expand(delta);
     }
 };
+
+inline const aabb aabb::empty = aabb(interval::empty, interval::empty, interval::empty);
+inline const aabb aabb::universe =
+    aabb(interval::universe, interval::universe, interval::universe);
+
+inline aabb operator+(const aabb& bbox, const vec3& offset) {
+    return aabb(bbox.x + offset.x(), bbox.y + offset.y(), bbox.z + offset.z());
+}
+
+inline aabb operator+(const vec3& offset, const aabb& bbox) { return bbox + offset; }
 
 #endif

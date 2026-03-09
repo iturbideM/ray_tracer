@@ -3,6 +3,7 @@
 
 #include "color.h"
 #include "hittable.h"
+#include "ray.h"
 #include "texture.h"
 #include "vec3.h"
 
@@ -24,7 +25,7 @@ class material {
 class lambertian : public material {
   public:
     lambertian(const color& albedo) : tex(std::make_shared<solid_color>(albedo)) {}
-    lambertian(shared_ptr<texture> tex) : tex(tex) {}
+    lambertian(std::shared_ptr<texture> tex) : tex(tex) {}
 
     virtual bool scatter(const ray& r_in, const hit_record& rec, color& attenuation,
                          ray& scattered) const override {
@@ -102,15 +103,31 @@ class dielectric : public material {
 
 class diffuse_light : public material {
   public:
-    diffuse_light(shared_ptr<texture> tex) : tex(tex) {}
-    diffuse_light(const color& emit) : tex(make_shared<solid_color>(emit)) {}
+    diffuse_light(std::shared_ptr<texture> tex) : tex(tex) {}
+    diffuse_light(const color& emit) : tex(std::make_shared<solid_color>(emit)) {}
 
     color emitted(double u, double v, const point3& p) const override {
         return tex->value(u, v, p);
     }
 
   private:
-    shared_ptr<texture> tex;
+    std::shared_ptr<texture> tex;
+};
+
+class isotropic : public material {
+  public:
+    isotropic(const color& albedo) : tex(std::make_shared<solid_color>(albedo)) {}
+    isotropic(std::shared_ptr<texture> tex) : tex(tex) {}
+
+    bool scatter(const ray& r_in, const hit_record& rec, color& attenuation,
+                 ray& scattered) const override {
+        scattered = ray(rec.p, random_unit_vector());
+        attenuation = tex->value(rec.u, rec.v, rec.p);
+        return true;
+    }
+
+  private:
+    std::shared_ptr<texture> tex;
 };
 
 #endif
