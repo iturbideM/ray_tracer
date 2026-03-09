@@ -13,9 +13,9 @@ A CPU-based ray tracer implemented in C++ following the [_Ray Tracing in One Wee
   - Volumetric rendering (constant medium/smoke)
   - BVH (Bounding Volume Hierarchy) acceleration
 
-## Take a look at my balls!!
+## Take a look at my big, shiny balls!!
 
-![Image of rendered spheres](output/final_scene.ppm)
+![Image of rendered spheres](assets/shiny_balls.jpg)
 
 ## Building
 
