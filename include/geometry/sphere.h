@@ -2,12 +2,13 @@
 #define SPHERE_H
 
 #include "aabb.h"
+#include "constants.h"
 #include "hittable.h"
 #include "interval.h"
-#include "rtweekend.h"
 #include "vec3.h"
 #include <cmath>
 #include <memory>
+
 
 class sphere : public hittable {
   public:

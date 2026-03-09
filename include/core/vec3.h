@@ -1,7 +1,8 @@
 #ifndef VEC3_H
 #define VEC3_H
 
-#include "rtweekend.h"
+#include "random_utils.h"
+
 #include <cmath>
 #include <ostream>
 

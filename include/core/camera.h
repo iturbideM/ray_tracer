@@ -4,8 +4,8 @@
 #include "color.h"
 #include "hittable.h"
 #include "material.h"
+#include "random_utils.h"
 #include "ray.h"
-#include "rtweekend.h"
 #include "vec3.h"
 
 #include <cmath>

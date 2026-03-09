@@ -2,12 +2,13 @@
 #define HITTABLE_H
 
 #include "aabb.h"
+#include "constants.h"
 #include "interval.h"
 #include "ray.h"
-#include "rtweekend.h"
 #include "vec3.h"
 #include <cmath>
 #include <memory>
+
 
 class material;
 

@@ -6,8 +6,8 @@
 #include "hittable.h"
 #include "interval.h"
 #include "material.h"
+#include "random_utils.h"
 #include "ray.h"
-#include "rtweekend.h"
 #include "texture.h"
 #include "vec3.h"
 
